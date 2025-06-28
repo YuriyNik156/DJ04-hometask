@@ -1,0 +1,20 @@
+/* Подсветка полей ввода при фокусе */
+input[type="text"], textarea {
+    border: 2px solid #007bff;
+    border-radius: 6px;
+    padding: 8px;
+    transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus, textarea:focus {
+    border-color: #0056b3;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0,123,255,0.5);
+}
+
+/* Стиль для карточек фильмов */
+.card {
+    background-color: #f9f9f9;
+    border-radius: 12px;
+    box-shadow: 0 3px 7px rgba(0,0,0,0.1);
+}
