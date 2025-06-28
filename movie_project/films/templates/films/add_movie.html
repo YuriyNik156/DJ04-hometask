@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Добавить фильм</title>
+</head>
+<body>
+
+  <h1>Добавить фильм</h1>
+
+  {% if error %}
+    <p style="color: red;">{{ error }}</p>
+  {% endif %}
+
+  <form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Сохранить</button>
+  </form>
+  
+  <a href="{% url 'movie_list' %}">Смотреть все фильмы</a>
+
+</body>
+</html>
