@@ -1,17 +1,21 @@
-<!DOCTYPE html>
-<html>
-<head><title>Список фильмов</title></head>
-<body>
+{% extends 'films/base.html' %}
 
-  <h1>Список фильмов</h1>
-  {% for movie in movies %}
-    <h2>{{ movie.title }}</h2>
-    <p><strong>Описание:</strong> {{ movie.description }}</p>
-    <p><strong>Отзыв:</strong> {{ movie.review }}</p>
-    <hr>
-  {% endfor %}
+{% block title %}Список фильмов{% endblock %}
 
-  <a href="{% url 'add_movie' %}">Добавить новый фильм</a>
+{% block content %}
+    <h1 class="mb-4">Список фильмов</h1>
 
-</body>
-</html>
+    {% for movie in movies %}
+        <div class="card mb-3">
+            <div class="card-body">
+                <h4 class="card-title">{{ movie.title }}</h4>
+                <p class="card-text"><strong>Описание:</strong> {{ movie.description }}</p>
+                <p class="card-text"><strong>Отзыв:</strong> {{ movie.review }}</p>
+            </div>
+        </div>
+    {% empty %}
+        <p class="text-muted">Фильмов пока нет.</p>
+    {% endfor %}
+
+    <a href="{% url 'add_movie' %}" class="btn btn-success">Добавить новый фильм</a>
+{% endblock %}

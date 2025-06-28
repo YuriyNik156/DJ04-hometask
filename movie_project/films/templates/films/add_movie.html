@@ -1,24 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Добавить фильм</title>
-</head>
-<body>
+{% extends 'films/base.html' %}
 
-  <h1>Добавить фильм</h1>
+{% block title %}Добавить фильм{% endblock %}
 
-  {% if error %}
-    <p style="color: red;">{{ error }}</p>
-  {% endif %}
+{% block content %}
+    <h1 class="mb-4">Добавить фильм</h1>
 
-  <form method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Сохранить</button>
-  </form>
+    {% if error %}
+        <div class="alert alert-danger">{{ error }}</div>
+    {% endif %}
 
-  <a href="{% url 'movie_list' %}">Смотреть все фильмы</a>
+    <form method="POST" class="mb-3">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Сохранить</button>
+    </form>
 
-</body>
-</html>
+    <a href="{% url 'movie_list' %}" class="btn btn-secondary">Смотреть все фильмы</a>
+{% endblock %}
